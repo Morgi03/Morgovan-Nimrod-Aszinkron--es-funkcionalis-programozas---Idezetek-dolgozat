@@ -55,6 +55,19 @@ async function LengthsOfQuotes() {
     elem.textContent = elemLista;
 }
 
+
+async function quotesOfAuthor() {
+    let response = await fetch('/quotes.json')
+    let vals = await response.json();
+    let input = document.getElementById('who');
+    let adatok = vals.quotes.filter(e => e.author.toUpperCase().includes(input.value.toUpperCase()));
+    eraser();
+    let ReadonlyInput = document.getElementById('ReadonlyInput');
+    ReadonlyInput.value = adatok.length;
+}
+
+
+
 function eraser() {
     document.getElementById('thelist').textContent = "";
     document.getElementById('theorderedlist').textContent = "";
@@ -65,4 +78,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('allquote').addEventListener('click', () => AllQuoteInABCorder());
     document.getElementById('the').addEventListener('click', () => The());
     document.getElementById('hossz').addEventListener('click', () => LengthsOfQuotes());
+    document.getElementById('who').addEventListener('input', () => quotesOfAuthor());
 })
