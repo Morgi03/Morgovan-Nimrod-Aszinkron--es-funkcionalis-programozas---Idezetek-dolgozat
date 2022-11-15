@@ -61,7 +61,6 @@ async function quotesOfAuthor() {
     let vals = await response.json();
     let input = document.getElementById('who');
     let adatok = vals.quotes.filter(e => e.author.toUpperCase().includes(input.value.toUpperCase()));
-    eraser();
     let ReadonlyInput = document.getElementById('ReadonlyInput');
     ReadonlyInput.value = adatok.length;
 }
