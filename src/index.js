@@ -34,19 +34,35 @@ async function The() {
     for (let i = 0; i < StringTomb.length; i++) {
         let li = document.createElement('li');
         li.textContent = StringTomb[i];
-        li.innerHTML = li.innerHTML.replace(/\bThe\b/g,"<b>The</b>");
-        li.innerHTML = li.innerHTML.replace(/\bthe\b/g,"<b>the</b>");
+        li.innerHTML = li.innerHTML.replace(/\bThe\b/g, "<b>The</b>");
+        li.innerHTML = li.innerHTML.replace(/\bthe\b/g, "<b>the</b>");
         elemek.appendChild(li);
     }
 }
 
 
+async function LengthsOfQuotes() {
+    let response = await fetch('/quotes.json')
+    let vals = await response.json();
+    let adatok = vals.quotes;
+    eraser();
+    let LengthOfTheQuotes = [];
+    for (let q of adatok) {
+        LengthOfTheQuotes.push(q.quote.length);
+    }
+    let elemLista = LengthOfTheQuotes.join(', ');
+    let elem = document.getElementById('thelengthofquotes');
+    elem.textContent = elemLista;
+}
+
 function eraser() {
     document.getElementById('thelist').textContent = "";
     document.getElementById('theorderedlist').textContent = "";
+    document.getElementById('thelengthofquotes').textContent = "";
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('allquote').addEventListener('click', () => AllQuoteInABCorder());
     document.getElementById('the').addEventListener('click', () => The());
+    document.getElementById('hossz').addEventListener('click', () => LengthsOfQuotes());
 })
