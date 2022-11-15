@@ -11,16 +11,21 @@
 </head>
 
 <body>
-    <div>
-        <button id="allquote">Összes idézet</button>
-        <button id="the">The</button>
-        <button id="hossz">Hossz</button>
-        <input type="text" id="who">
+    <div id="above">
+        <div id="feladatok">
+            <button id="allquote">Összes idézet</button> <br />
+            <button id="the">The</button><br />
+            <button id="hossz">Hossz</button><br />
+            <input type="text" id="who" placeholder="Írja ide a szerző nevét"><br />
+            <input type="number" id="ReadonlyInput" placeholder="Darabszám (itt fog megjelenni a találatok száma)"
+                readonly><br />
+        </div>
     </div>
-    <ul id="thelist"></ul>
-    <ol id="theorderedlist"></ol>
-    <p id="thelengthofquotes"></p>
-    <input type="number" id="ReadonlyInput" placeholder="Darabszám" readonly>
+    <div id="eredmenyek">
+        <ul id="thelist"></ul>
+        <ol id="theorderedlist"></ol>
+        <p id="thelengthofquotes"></p>
+    </div>
 </body>
 
 </html>
